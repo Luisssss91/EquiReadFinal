@@ -76,26 +76,42 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <div class="main-content">
     <div class="container">
         <div class="form-container">
-            <h2>Login to Your Account</h2>
-            <p>Please fill in your credentials to login.</p>
+            <!-- Logo Section - Perfectly Centered -->
+            <div style="text-align: center; margin-bottom: .5rem;">
+                <img src="images/balds.png" alt="Site Logo" style="max-width: 130px; display: inline-block;">
+            </div>
+            
+            <h2 style="text-align: center; margin-bottom: 0.5rem;">Welcome Back!</h2>
+            <p style="text-align: center; color: #6c757d; margin-bottom: 1.5rem;">Please login to your account</p>
+            
             <?php if(isset($_GET['registration']) && $_GET['registration'] == 'success'): ?>
                 <div class="alert alert-success">Registration successful! Please login.</div>
             <?php endif; ?>
+            
+            <?php if(isset($_GET['logout']) && $_GET['logout'] == 'success'): ?>
+                <div class="alert alert-success">You have been logged out successfully.</div>
+            <?php endif; ?>
+            
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
+                    <label><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>" placeholder="Enter your email">
                     <span class="invalid-feedback"><?php echo $email_err; ?></span>
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                    <label><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" placeholder="Enter your password">
                     <span class="invalid-feedback"><?php echo $password_err; ?></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="btn" value="Login">
+                    <button type="submit" class="btn btn-primary btn-block" style="width: 100%;">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
                 </div>
-                <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+                
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <p>Don't have an account? <a href="register.php" style="color: #8ACDD7;">Sign up now</a></p>
+                </div>
             </form>
         </div>
     </div>
